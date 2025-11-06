@@ -10,8 +10,11 @@ This repository contains the **frontend client** for the *Lotus-BF* system — a
 
 | Type | URL |
 |------|-----|
+| 🌍 Live Demo | [https://bearbearcookies.github.io/LoTUS-BF-frontend/](https://bearbearcookies.github.io/LoTUS-BF-frontend/) |
 | 🧩 Repository | [ntu-info/lotus-bf-frontend-BearBearCookies](https://github.com/ntu-info/lotus-bf-frontend-BearBearCookies) |
 | 💻 Local App | [http://localhost:5173/](http://localhost:5173/) |
+
+
 
 ---
 
