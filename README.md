@@ -70,3 +70,20 @@ lotus-bf-frontend/
 |Deployment|	GitHub Actions|
 
 ---
+
+## 🧠 About Lotus-BF
+
+**Lotus-BF** is an interactive web platform that visualizes connections between **psychological terms, brain regions, and related studies** using large-scale meta-analytic data such as **NeuroSynth**.
+
+### 🔍 Key Features
+
+* **Query Builder:** Build logical term searches (e.g., `amygdala AND emotion`) to explore study networks.
+* **Term Association Map:** View how concepts link across neuroscience and psychology.
+* **Brain Localization:** Identify brain areas tied to specific cognitive or affective terms.
+* **Integrated References:** Access PubMed and related research directly from search results.
+
+### 💡 Research Benefits
+
+Accelerates discovery, bridges conceptual and neural data, and supports transparent, reproducible exploration in cognitive and affective neuroscience.
+
+> 🧩 *Lotus-BF helps researchers query smarter, visualize deeper, and connect ideas faster.*
