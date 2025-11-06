@@ -1,11 +1,67 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/DZepDCgF)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21433753&assignment_repo_type=AssignmentRepo)
-nvm install --lts # for solving 
+## 🌐 Lotus-BF Frontend
+A modern web interface built with React + Vite for exploring brain–term associations.
 
-rm -rf node_modules package-lock.json # delete all incompatible packages
+This repository contains the frontend client for the Lotus-BF system—a modular platform for visualizing and querying relationships between psychological terms and neuroimaging data.
 
-npm install # reinstall every packages according to pacakge.json
+🔗 Live Demo: https://<your-username>.github.io/lotus-bf-frontend/
 
-npm run dev # for local development
+Note: This is the frontend only. The corresponding backend service repository can be found at [link-to-your-backend-repo].
 
-npm run build # for server deployment; upload the ./dist folder to a server
+## 🚀 Getting Started (Local Development)
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+1. Prerequisites
+Node.js (v18+ recommended)
+
+npm (comes with Node.js)
+
+2. Installation
+Clone the repository and install the necessary dependencies:
+
+Bash
+
+git clone https://github.com/ntu-info/lotus-bf-frontend-BearBearCookies
+cd lotus-bf-frontend
+npm install
+3. Run Locally
+Start the local development server. The application will be available at http://localhost:5173/.
+
+Bash
+
+npm run dev
+
+## 🧭 Project Structure
+lotus-bf-frontend/
+│
+├── .github/workflows/   # GitHub Actions workflow for deployment
+│   └── deploy.yml
+│
+├── public/              # Static assets (favicon, manifest, etc.)
+│
+├── src/
+│   ├── assets/          # Images, icons, global styles
+│   ├── components/      # Reusable React components
+│   ├── hooks/           # Custom React hooks (e.g., for data fetching)
+│   ├── api.js           # API connection logic
+│   ├── App.jsx          # Root layout and routing
+│   └── main.jsx         # Application entry point
+│
+├── .gitignore           # Files to ignore by Git
+├── index.html           # HTML entry point for Vite
+├── vite.config.js       # Vite configuration
+├── package.json         # Dependencies and scripts
+└── README.md            # You are here!
+
+## 🛠️ Tech Stack
+Core: React 18
+
+Build Tool: Vite
+
+Language: JavaScript (ESNext)
+
+Styling: CSS (can be easily extended with Tailwind, etc.)
+
+Deployment: GitHub Actions
+
+## 📜 License
+This project is licensed under the MIT License. See the LICENSE file for details.
