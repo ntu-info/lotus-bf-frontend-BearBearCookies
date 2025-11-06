@@ -1,0 +1,802 @@
+/* ===== Light Mode (Default) ===== */
+:root[data-theme="light"] {
+  /* Primary Colors */
+  --matcha-primary: #7c9d7c;
+  --matcha-primary-light: #a8c5a8;
+  --matcha-primary-dark: #5a7a5a;
+  
+  /* Background & Surface */
+  --bg-cream: #f8f6f0;
+  --bg-white: #ffffff;
+  --bg-card: #fdfcf8;
+  --bg-texture: url('./assets/Marble.png');
+  --bg-texture-size: auto;
+  --bg-texture-repeat: repeat;
+  --bg-texture-dim: 0.12; /* adjust 0 = fully dimmed, 1 = full texture */
+  --bg-base-overlay: 255,255,255; /* overlay RGB for light theme */
+  
+  /* Accent Colors */
+  --accent-warm: #d4a574;
+  --accent-sage: #b5c4a9;
+  
+  /* Text Colors */
+  --text-primary: #3a3a3a;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9a9a9a;
+  
+  /* Border & Dividers */
+  --border-light: #e8e5dc;
+  --border-medium: #d4cfc4;
+  
+  /* Semantic Colors */
+  --success: #7c9d7c;
+  --error: #c87c7c;
+  --warning: #d4a574;
+  
+  /* Button Colors */
+  --btn-bg: #ffffff;
+  --btn-text: #3a3a3a;
+  --btn-border: #d4cfc4;
+  --btn-hover-bg: #f8f6f0;
+}
+
+/* ===== Dark Mode ===== */
+:root[data-theme="dark"] {
+  /* Primary Colors */
+  --matcha-primary: #8fb08f;
+  --matcha-primary-light: #a8c5a8;
+  --matcha-primary-dark: #6b8a6b;
+  
+  /* Background & Surface */
+  --bg-cream: #1a1d1a;
+  --bg-white: #242824;
+  --bg-card: #2a2e2a;
+  --bg-texture: url('./assets/Marble.png');
+  --bg-texture-size: auto;
+  --bg-texture-repeat: repeat;
+  --bg-texture-dim: 0.3; /* increase for darker theme to reduce texture contrast */
+  --bg-base-overlay: 0,0,0; /* overlay RGB for dark theme */
+  
+  /* Accent Colors */
+  --accent-warm: #d4a574;
+  --accent-sage: #8a9a7e;
+  
+  /* Text Colors */
+  --text-primary: #e8e8e8;
+  --text-secondary: #b8b8b8;
+  --text-muted: #888888;
+  
+  /* Border & Dividers */
+  --border-light: #3a3e3a;
+  --border-medium: #4a4e4a;
+  
+  /* Semantic Colors */
+  --success: #8fb08f;
+  --error: #d88a8a;
+  --warning: #d4a574;
+  
+  /* Button Colors */
+  --btn-bg: #2a2e2a;
+  --btn-text: #e8e8e8;
+  --btn-border: #4a4e4a;
+  --btn-hover-bg: #343834;
+}
+
+/* ===== Font Size Variables ===== */
+:root[data-font-size="standard"] {
+  --font-size-base: 14px;
+  --font-size-sm: 12px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-input: 13px;
+  --font-size-table: 13px;
+}
+
+:root[data-font-size="big"] {
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-input: 15px;
+  --font-size-table: 15px;
+}
+
+:root[data-font-size="biggest"] {
+  --font-size-base: 18px;
+  --font-size-sm: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 22px;
+  --font-size-input: 17px;
+  --font-size-table: 17px;
+}
+
+/* ===== Font Family Variables ===== */
+:root[data-font-family="inter"] {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root[data-font-family="system"] {
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root[data-font-family="serif"] {
+  --font-primary: 'Georgia', 'Times New Roman', Times, serif;
+}
+
+/* ===== Base Styles ===== */
+:root {
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-cream);
+
+  /* ONE declaration with two layers: a dimming overlay, then the marble */
+  background-image:
+    linear-gradient(
+      rgba(var(--bg-base-overlay), var(--bg-texture-dim)),
+      rgba(var(--bg-base-overlay), var(--bg-texture-dim))
+    ),
+    var(--bg-texture);
+
+  /* size and repeat for BOTH layers (1st overlay, 2nd the image) */
+  background-size: 100% 100%, var(--bg-texture-size);
+  background-repeat: no-repeat, var(--bg-texture-repeat);
+
+  /* keep it simple; fixed can cause mobile glitches */
+  background-attachment: scroll, scroll;
+
+  /* (optional) a gentle blend, but not required since we already dim with the overlay */
+  /* background-blend-mode: multiply; */
+
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== App Container ===== */
+.app {
+  max-width: none;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  
+  background: transparent;
+}
+
+/* ===== Header ===== */
+.app__header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--matcha-primary-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app__header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app__logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app__logo-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--matcha-primary) 0%, var(--matcha-primary-dark) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 4px 12px rgba(124, 157, 124, 0.3);
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.5px;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--matcha-primary-dark);
+  background: linear-gradient(135deg, var(--matcha-primary) 0%, var(--matcha-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Georgia', serif;
+}
+
+.app__subtitle {
+  display: none; /* Hidden as per requirement */
+}
+
+.app__header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ===== Settings Panel ===== */
+.settings-btn,
+.help-btn,
+.bookmark-btn {
+  background: var(--btn-bg);
+  border: 1.5px solid var(--btn-border);
+  color: var(--matcha-primary-dark);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  line-height: 1;
+}
+
+/* Hover + focus match */
+.settings-btn:hover,
+.help-btn:hover,
+.bookmark-btn:hover,
+.settings-btn:focus-visible,
+.help-btn:focus-visible,
+.bookmark-btn:focus-visible {
+  background: var(--btn-hover-bg);
+  border-color: var(--matcha-primary);
+  color: var(--matcha-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124,157,124,0.12);
+}
+
+/* Dark mode text color parity */
+:root[data-theme="dark"] .settings-btn,
+:root[data-theme="dark"] .help-btn,
+:root[data-theme="dark"] .bookmark-btn {
+  color: #ffffff;
+}
+:root[data-theme="dark"] .settings-btn:hover,
+:root[data-theme="dark"] .help-btn:hover,
+:root[data-theme="dark"] .bookmark-btn:hover {
+  color: var(--matcha-primary);
+}
+
+.settings-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 280px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.settings-section {
+  margin-bottom: 16px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.settings-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border-medium);
+  border-radius: 8px;
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-medium);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings-toggle:hover {
+  border-color: var(--matcha-primary);
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  background: var(--border-medium);
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-switch.active {
+  background: var(--matcha-primary);
+}
+
+.toggle-switch-handle {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  /* Global body background: overlay layer then the texture layer; texture fixed so it stays visible on scroll */
+  body {
+    margin: 0;
+    background-color: var(--bg-cream);
+    /* two-layer background:
+       1) translucent solid color overlay to dim the texture (use theme RGB + alpha variable)
+       2) the texture image itself
+    */
+    background-image:
+      linear-gradient(rgba(var(--bg-base-overlay), var(--bg-texture-dim)), rgba(var(--bg-base-overlay), var(--bg-texture-dim))),
+      var(--bg-texture);
+    background-size: auto, var(--bg-texture-size);
+    background-repeat: no-repeat, var(--bg-texture-repeat);
+    /* fixed keeps the texture anchored so it doesn't disappear when scrolling long content */
+    background-attachment: scroll, fixed;
+    background-blend-mode: multiply;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Optional: disable fixed attachment on small screens where some browsers ignore it or it causes performance issues */
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll, scroll;
+    }
+  }
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+.bookmark-btn {
+  position: relative; /* so badge can anchor */
+}
+
+/* Circular solid badge for bookmark count */
+.bookmark-count {
+  position: static;
+  top: -6px;
+  right: -6px;
+  width: 23px;
+  height: 23px;
+  border-radius: 60%;                /* makes it a circle */
+  background: var(--matcha-primary-dark); 
+  color: #ffffff;                    /* white number text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  border: 0.5px solid var(--bg-cream); /* ring effect */
+}
+
+/* Dark mode ring contrast */
+:root[data-theme="dark"] .bookmark-count {
+  border-color: var(--bg-card);
+}
+
+/* ===== Grid Layout ===== */
+.app__grid {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  min-height: calc(100vh - 160px);
+}
+
+.app__grid > .card {
+  flex: 1 1 0;
+  min-width: 280px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Resizer ===== */
+.resizer {
+  width: 6px;
+  cursor: col-resize;
+  position: relative;
+  user-select: none;
+  touch-action: none;
+  align-self: stretch;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.resizer::after {
+  content: '';
+  width: 2px;
+  height: 40px;
+  background: var(--border-medium);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.resizer:hover::after {
+  background: var(--matcha-primary);
+  height: 60px;
+}
+
+/* ===== Card Component ===== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+  overflow: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: var(--font-size-xl);
+  margin-bottom: 16px;
+  color: var(--matcha-primary-dark);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--matcha-primary-light);
+}
+
+.card--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card--stack > .divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--border-medium) 20%, 
+    var(--border-medium) 80%, 
+    transparent 100%);
+  margin: 8px 0;
+}
+
+/* ===== Form Elements ===== */
+input[type="text"],
+input[type="search"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-size: var(--font-size-input);
+  font-family: var(--font-primary);
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--matcha-primary);
+  box-shadow: 0 0 0 3px rgba(124, 157, 124, 0.1);
+}
+
+input[type="text"]::placeholder,
+input[type="search"]::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== Buttons ===== */
+button,
+.btn,
+[role="button"],
+.button {
+  background: var(--matcha-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+button:hover,
+.btn:hover,
+[role="button"]:hover,
+.button:hover {
+  background: var(--matcha-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(124, 157, 124, 0.3);
+}
+
+button:active,
+.btn:active,
+[role="button"]:active,
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(124, 157, 124, 0.2);
+}
+
+button:disabled,
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn--secondary {
+  background: var(--accent-sage);
+}
+
+.btn--secondary:hover {
+  background: #9db291;
+}
+
+.btn--outline {
+  background: var(--btn-bg);
+  border: 1.5px solid var(--btn-border);
+  color: var(--btn-text);
+}
+
+.btn--outline:hover {
+  background: var(--btn-hover-bg);
+  border-color: var(--matcha-primary);
+  color: var(--matcha-primary);
+}
+
+/* ===== Loading States ===== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ===== Alerts ===== */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+.alert--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.alert--warning {
+  background: #fffbeb;
+  border: 1px solid #fed7aa;
+  color: #92400e;
+}
+
+.alert--success {
+  background: #f0f9f4;
+  border: 1px solid var(--matcha-primary-light);
+  color: var(--matcha-primary-dark);
+}
+
+/* Dark mode alerts */
+:root[data-theme="dark"] .alert--error {
+  background: #3a2020;
+  border-color: #5a3030;
+  color: #ff9999;
+}
+
+:root[data-theme="dark"] .alert--warning {
+  background: #3a3020;
+  border-color: #5a4830;
+  color: #ffd999;
+}
+
+:root[data-theme="dark"] .alert--success {
+  background: #203a20;
+  border-color: #305a30;
+  color: #99ff99;
+}
+
+/* ===== Tables ===== */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-table);
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-cream);
+}
+
+th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-medium);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr {
+  transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+  background: var(--bg-cream);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--matcha-primary-light);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1280px) {
+  .app__grid {
+    gap: 6px;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .app__grid > .card {
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .app {
+    padding: 16px;
+  }
+  
+  .app__grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .resizer {
+    display: none;
+  }
+  
+  .app__title {
+    font-size: 24px;
+  }
+  
+  .app__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .app__header-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* ===== Footer ===== */
+.app__footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app__footer a {
+  color: var(--matcha-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app__footer a:hover {
+  color: var(--matcha-primary-dark);
+  text-decoration: underline;
+}
