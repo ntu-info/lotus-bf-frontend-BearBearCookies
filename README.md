@@ -36,6 +36,7 @@ Then open → http://localhost:5173/
 ---
 
 ## 🧭 Project Structure
+```bash
 lotus-bf-frontend/
 │
 ├── .github/workflows/      # GitHub Actions workflow (for auto-deploy)
@@ -56,13 +57,19 @@ lotus-bf-frontend/
 ├── vite.config.js          # Vite configuration
 ├── package.json            # Dependencies & scripts
 └── README.md               # Project documentation (you are here)
-
+```
 ---
 
 ## 🛠️ Tech Stack
-Category	Tool / Library
-Core Framework	React 18
-Build Tool	Vite
-Language	JavaScript (ESNext)
-Styling	CSS / Tailwind (extendable)
-Deployment	GitHub Actions
+|Category	|Tool / Library|
+|------|-----|
+|Core Framework|	React 18|
+|Build Tool|	Vite|
+|Language|	JavaScript (ESNext)|
+|Styling	|CSS / Tailwind (extendable)|
+|Deployment|	GitHub Actions|
+
+---
+
+## 📜 License 
+This project is licensed under the MIT License. See the LICENSE file for details.
